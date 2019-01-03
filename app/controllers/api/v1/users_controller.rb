@@ -9,7 +9,7 @@ module Api
       def show
         user = User.find(params[:id])
 
-        cocktail_json = {
+        user_json = {
           id: user.id,
           username: user.username,
           password: user.password,
@@ -19,7 +19,10 @@ module Api
       end
 
       def create
-        byebug
+        @user = User.create(user_params)
+
+        render json: @user
+
       end
 
       def edit
@@ -33,6 +36,17 @@ module Api
       def destroy
 
       end
+
+      private
+
+      def user_params
+        params.require(:user).permit(:username, :password)
+      end
+
+
+
+
+
     end
   end
 end

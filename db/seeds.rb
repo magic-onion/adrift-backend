@@ -7,5 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Game.destroy_all
 
 alex = User.create(username: "alex", password: "password")
+game1 = Game.create(event: 225, user: alex )
